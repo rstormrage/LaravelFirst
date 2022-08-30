@@ -74,11 +74,29 @@ Route::get('/', function () {
 
 
 Route::any('/contact', [HomeController::class, 'create']);
-Route::any('/home/post', [HomeController::class, 'store']);
+Route::any('/post', [HomeController::class, 'store']);
 
 
-Route::get('/admin/show/{id}', [AdminController::class, 'findbyid']);
-Route::get('/admin/all', [AdminController::class, 'findall']);
-Route::any('/admin/update', [AdminController::class, 'updatebyid']);
-Route::any('/admin/delete', [AdminController::class, 'deletebyid']);
+
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('/', [AdminController::class, 'index']);
+    Route::get('/show/{id}', [AdminController::class, 'findbyid']);
+    Route::get('/all', [AdminController::class, 'findall']);
+    Route::any('/update', [AdminController::class, 'updatebyid']);
+    Route::any('/delete', [AdminController::class, 'deletebyid']);
+});
+
 // Route::get('contact/index', [ContactController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/admin/dashboard', function(){
+    return view('dashboard');
+});
+
+Route::get('/vipm/dashboard', function(){
+    return view('dashboard');
+});
