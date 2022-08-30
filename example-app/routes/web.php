@@ -93,10 +93,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/dashboard', function(){
+Route::get('/admin/dashboard', [AdminController::class, 'findall'],function(){
     return view('dashboard');
-});
+})->middleware(['auth', 'admin']);
 
 Route::get('/vipm/dashboard', function(){
     return view('dashboard');
-});
+})->middleware(['auth', 'vip']);

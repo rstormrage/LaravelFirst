@@ -22,6 +22,11 @@ class AdminController extends Controller
         $data = Contact::get();
         return view('contact.list', compact('data'));
     }
+
+    public function all(){
+        $data = Contact::get();
+        return view('dashboard', compact('data'));
+    }
     
     public function updatebyid(){
         // $data = Contact::find(8);
