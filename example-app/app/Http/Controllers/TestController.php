@@ -93,7 +93,18 @@ class TestController extends Controller
     
     public function test3(){
         $date = date('Y-m-d H:i:s', time());
-        $day = 'Monday';
-        return view('home.test.test3',['date' => $date, 'day' => $day]);
+        $day = date('N');
+        $time = strtotime('-4 hour');
+        return view('home.test.test3',compact('date', 'day', 'time'));
+    }
+
+    public function test4(){
+        $data = DB::table('contact') -> get();
+        // $data = json_decode($data, true);
+        return view('home.test.test4', compact('data'));
+    }
+
+    public function test5(){
+        return view('home.test.test5');
     }
 }
