@@ -82,7 +82,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/show/{id}', [AdminController::class, 'findbyid']);
-    Route::get('/all', [AdminController::class, 'findall']);
+    Route::get('/all', [AdminController::class, 'findall'])->middleware(['auth', 'admin']);
     Route::any('/update', [AdminController::class, 'updatebyid']);
     Route::any('/delete', [AdminController::class, 'deletebyid']);
 });
@@ -93,7 +93,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin/dashboard', [AdminController::class, 'findall'],function(){
+Route::get('/admin/dashboard',[AdminController::class, 'findall'], function(){
     return view('dashboard');
 })->middleware(['auth', 'admin']);
 

@@ -74,6 +74,8 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('list')
+            @yield('form')
         </main>
     </div>
 </body>

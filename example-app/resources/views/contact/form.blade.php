@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit form</title>
 </head>
-<body>
+<body> -->
+@extends('layouts.app')
+
+
+@section('form')
+<div style="padding: 20px">
     <h1>Create Post</h1>
 
     @if ($errors->any())
@@ -36,6 +41,7 @@
             <input type="submit" value="submit">
         </form>
     </div>
-    
-</body>
-</html>
+</div>
+@endsection
+<!-- </body>
+</html> -->
